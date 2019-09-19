@@ -11,4 +11,9 @@ export class UserService {
     getAll() {
         return this.http.get<User[]>(`${environment.apiUrl}/users`);
     }
+
+    register(user: User) {
+      return this.http.post(`${environment.apiUrl}/users/register`, user);
+  }
+
 }
