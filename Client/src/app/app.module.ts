@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 
 import { BasicAuthInterceptor, ErrorInterceptor } from './_helpers';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { BasicAuthInterceptor, ErrorInterceptor } from './_helpers';
     HomeComponent,
     NavbarComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
