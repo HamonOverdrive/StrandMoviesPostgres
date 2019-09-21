@@ -19,6 +19,37 @@ namespace WebApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("WebApi.Entities.Movie", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Director");
+
+                    b.Property<string>("Genre");
+
+                    b.Property<string>("MetaScore");
+
+                    b.Property<string>("Plot");
+
+                    b.Property<string>("Poster");
+
+                    b.Property<string>("Rated");
+
+                    b.Property<string>("Released");
+
+                    b.Property<string>("Title");
+
+                    b.Property<string>("Writer");
+
+                    b.Property<string>("Year");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Movies");
+                });
+
             modelBuilder.Entity("WebApi.Entities.User", b =>
                 {
                     b.Property<int>("Id")
@@ -33,7 +64,7 @@ namespace WebApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

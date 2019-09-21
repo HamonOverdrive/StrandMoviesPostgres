@@ -36,7 +36,7 @@ namespace WebApi
 
             services.AddHttpClient("omdb", c =>
                 {
-                c.BaseAddress = new Uri("http://www.omdbapi.com/?apikey=27630fb&");
+                c.BaseAddress = new Uri("http://www.omdbapi.com/");
                 // Github API versioning
                 c.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -86,6 +86,7 @@ namespace WebApi
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IMovieService, MovieService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
