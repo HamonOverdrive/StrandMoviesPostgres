@@ -8,7 +8,7 @@ namespace WebApi.Entities
         public string ListName { get; set; }
 
         public ICollection<Movie> Movies { get; set; }
-
+        public int UserId { get; set; }
         public User User { get; set; }
     }
 }

@@ -87,6 +87,7 @@ namespace WebApi
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IMovieListService, MovieListService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

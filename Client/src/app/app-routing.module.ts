@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component'
+import { StrandFormComponent } from './strand-form/strand-form.component'
 import { AuthGuard } from './_helpers';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'strandform', component: StrandFormComponent },
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

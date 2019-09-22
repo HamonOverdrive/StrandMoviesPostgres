@@ -26,7 +26,6 @@ namespace WebApi.Controllers
         {
            var mov =  await _movieService.GetByTitle();
 
-
             return Ok();
         }
     }
