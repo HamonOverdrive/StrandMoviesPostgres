@@ -20,6 +20,13 @@ namespace WebApi.Controllers
 
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetAllByUserId(int id)
+        {
+            var strands =  _movieListService.GetAllByUserId(id);
+            return Ok(strands);
+        }
+
         [HttpPost("create")]
         public IActionResult Create([FromBody]MovieList movieList)
         {

@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { RegisterComponent } from './register/register.component';
 import { StrandFormComponent } from './strand-form/strand-form.component';
+import { StrandListComponent } from './strand-list/strand-list.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { StrandFormComponent } from './strand-form/strand-form.component';
     LoginComponent,
     RegisterComponent,
     StrandFormComponent,
+    StrandListComponent,
   ],
   imports: [
     BrowserModule,

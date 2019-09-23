@@ -1,11 +1,13 @@
 using WebApi.Helpers;
 using System.Linq;
+using System.Collections.Generic;
 using WebApi.Entities;
 namespace WebApi.Services
 {
     public interface IMovieListService
     {
         MovieList Create(MovieList movieList);
+        IEnumerable<MovieList> GetAllByUserId(int id);
     }
     public class MovieListService : IMovieListService
     {
@@ -26,6 +28,12 @@ namespace WebApi.Services
             _context.SaveChanges();
 
             return movieList;
+        }
+
+
+        public IEnumerable<MovieList> GetAllByUserId(int id)
+        {
+            return _context.MovieLists.Where(x => x.UserId == id).ToList();
         }
     }
 }
