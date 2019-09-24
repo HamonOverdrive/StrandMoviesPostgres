@@ -4,7 +4,11 @@
       <h6>Users from secure api end point</h6>
       <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
       <ul *ngIf="strands">
-          <li *ngFor="let strand of strands">{{strand.listName}} </li>
+          <li *ngFor="let strand of strands">
+            <a routerLink="/strands/{{strand.id}}/">
+              {{strand.listName}}
+            </a>
+          </li>
       </ul>
   </div>
 

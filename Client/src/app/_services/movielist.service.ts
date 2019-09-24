@@ -9,8 +9,12 @@ import { MovieList } from '@app/_models';
 export class MovieListService {
     constructor(private http: HttpClient) { }
 
+    getById(id: number){
+      return this.http.get<MovieList>(`${environment.apiUrl}/movielists/` + id);
+    }
+
     getAllByUserId(id: number) {
-      return this.http.get<MovieList[]>(`${environment.apiUrl}/movielists/` + id);
+      return this.http.get<MovieList[]>(`${environment.apiUrl}/movielists/strands/` + id);
     }
 
     create(movieList: MovieList) {

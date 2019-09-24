@@ -21,6 +21,13 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var result =  _movieListService.GetById(id);
+            return Ok(result);
+        }
+
+        [HttpGet("strands/{id}")]
         public IActionResult GetAllByUserId(int id)
         {
             var strands =  _movieListService.GetAllByUserId(id);

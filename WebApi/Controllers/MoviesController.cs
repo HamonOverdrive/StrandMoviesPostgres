@@ -28,5 +28,13 @@ namespace WebApi.Controllers
 
             return Ok();
         }
+
+
+        [HttpGet("{id}")]
+        public IActionResult GetAllFromCurrentStrand(int strandid)
+        {
+            var allmovies =  _movieService.GetAllFromCurrentStrand(strandid);
+            return Ok(allmovies);
+        }
     }
 }

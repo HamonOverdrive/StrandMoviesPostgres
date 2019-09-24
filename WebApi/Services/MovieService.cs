@@ -13,6 +13,7 @@ namespace WebApi.Services
     public interface IMovieService
     {
          Task<Movie> GetByTitle();
+         IEnumerable<Movie> GetAllFromCurrentStrand(int strandid);
     }
 
     public class MovieService : IMovieService
@@ -49,6 +50,11 @@ namespace WebApi.Services
              Console.WriteLine("Save Complete");
 
             return testMovie;
+        }
+
+        public IEnumerable<Movie> GetAllFromCurrentStrand(int strandid)
+        {
+            return _context.Movies.Where(x => x.MovieList.Id == strandid).ToList();
         }
 
 
