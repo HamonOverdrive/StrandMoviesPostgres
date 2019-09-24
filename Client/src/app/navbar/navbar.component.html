@@ -1,39 +1,34 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" routerLink="#">Strand Movies</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
-  <ul class="navbar-nav mr-auto">
-      <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <label for="search-bar" class="sr-only">Search bar</label>
-            <div class="input-group">
-              <input type="search" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-              </span>
+  <ul class="nav navbar-nav mr-auto w-80">
+    <li class="text-truncate w-80">
+        <form class="input-group">
+            <input class="form-control input-mysize" name="search" placeholder="Search Here" autocomplete="off" autofocus="autofocus" type="text">
+            <div class="input-group-btn">
+                <button class="btn btn-outline-success" type="submit">Search</button>
             </div>
-          </div>
         </form>
+    </li>
+  </ul>
+    <ul class="nav navbar-nav">
+      <li class="nav-item">
+          <!--spacer-->
+          &nbsp;
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link" routerLink="/strandform">StrandForm</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-item nav-link" routerLink="/strands">My Strands</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-item nav-link" routerLink="/register">Register</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      </li>
     </ul>
 
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-item nav-link" routerLink="/strandform">StrandForm</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-item nav-link" routerLink="/strands">My Strands</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-item nav-link" routerLink="/register">Register</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-item nav-link" (click)="logout()">Logout</a>
-        </li>
-    </ul>
-
-  </div>
 </nav>
