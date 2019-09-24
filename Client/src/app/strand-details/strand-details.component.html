@@ -1,1 +1,14 @@
-<p>strand-details works!</p>
+<div *ngIf="strand">
+    <h2>{{strand.listName | uppercase}} Details</h2>
+    <div><span>id: </span>{{strand.id}}</div>
+
+    <ul *ngIf="strand.movies">
+        <li *ngFor="let movie of movies">
+          <a routerLink="/strands/{{strand.id}}/">
+            {{strand.listName}}
+          </a>
+        </li>
+    </ul>
+
+  </div>
+  <button (click)="goBack()">go back</button>
