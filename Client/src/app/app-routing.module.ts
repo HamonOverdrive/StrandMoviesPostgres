@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component'
 import { StrandFormComponent } from './strand-form/strand-form.component'
 import { StrandListComponent } from './strand-list/strand-list.component'
 import { StrandDetailsComponent } from './strand-details/strand-details.component'
+import { SearchResultsComponent } from './search-results/search-results.component'
 import { AuthGuard } from './_helpers';
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'strandform', component: StrandFormComponent },
   { path: 'strands', component: StrandListComponent },
   { path: 'strands/:id', component: StrandDetailsComponent },
+  { path: 'search', component: SearchResultsComponent },
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

@@ -4,8 +4,10 @@
 
   <ul class="nav navbar-nav mr-auto w-80">
     <li class="text-truncate w-80">
-        <form class="input-group">
-            <input class="form-control input-mysize" name="search" placeholder="Search Here" autocomplete="off" autofocus="autofocus" type="text">
+        <form  class="input-group" (ngSubmit)="onSubmit(searchM)">
+          <input id="typeahead-http" [(ngModel)]="searchM" type="text" class="form-control" name="searched" />
+          <!-- <span *ngIf="searching">searching...</span>
+          <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div> -->
             <div class="input-group-btn">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </div>

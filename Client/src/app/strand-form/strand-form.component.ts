@@ -60,6 +60,6 @@ export class StrandFormComponent implements OnInit {
             this.alertService.error(error);
             this.loading = false;
         });
-}
+  }
 
 }

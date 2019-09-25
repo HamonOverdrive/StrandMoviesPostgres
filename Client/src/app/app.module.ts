@@ -7,12 +7,14 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { RegisterComponent } from './register/register.component';
 import { StrandFormComponent } from './strand-form/strand-form.component';
 import { StrandListComponent } from './strand-list/strand-list.component';
 import { StrandDetailsComponent } from './strand-details/strand-details.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { StrandDetailsComponent } from './strand-details/strand-details.componen
     StrandFormComponent,
     StrandListComponent,
     StrandDetailsComponent,
+    SearchResultsComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { StrandDetailsComponent } from './strand-details/strand-details.componen
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    NgbModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
