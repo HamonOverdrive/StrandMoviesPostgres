@@ -18,15 +18,16 @@ export class SearchResultsComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
       const inputParam = params['input'];
-      console.log(inputParam);
+
       this.searchInput = inputParam;
+      this.getSearchMovieQuery(this.searchInput);
     });
 
-    this.getSearchMovieQuery();
+
   }
 
-  getSearchMovieQuery(): void {
-    this.omdbService.movieSearchQuery()
+  getSearchMovieQuery(para: string): void {
+    this.omdbService.movieSearchQuery(para)
         .subscribe(movies => this.moviedtos = movies);
   }
 

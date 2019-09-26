@@ -13,7 +13,7 @@ namespace WebApi.Services
 {
     public interface IOMDBService
     {
-         Task<List<MovieDto>> MovieSearchQuery();
+         Task<List<MovieDto>> MovieSearchQuery(string input);
     }
 
     public class OMDBService : IOMDBService
@@ -30,10 +30,12 @@ namespace WebApi.Services
         }
 
         // takes in movie string and queries search from omdb api
-        public async Task<List<MovieDto>> MovieSearchQuery()
+        public async Task<List<MovieDto>> MovieSearchQuery(string input)
         {
+
+            var encoded = Uri.EscapeUriString(input);
             var request = new HttpRequestMessage(HttpMethod.Get,
-            "?s=kara+no+kyoukai&apikey=27630fb");
+            $"?s={encoded}&page=1&apikey=27630fb");
 
             var client = _clientFactory.CreateClient("omdb");
             var response = await client.SendAsync(request);

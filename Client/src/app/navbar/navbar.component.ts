@@ -36,17 +36,7 @@ export class NavbarComponent implements OnInit {
       queryParams: { 'input': convertedParam}
     }
     this.router.navigate(['/search'], navigationExtras);
-    // this.omdbService.movieSearchQuery()
-    // .pipe(first())
-    // .subscribe(
-    //     data => {
-    //         this.alertService.success('Strand Created', true);
-    //         this.router.navigate(['/search'], navigationExtras);
-    //     },
-    //     error => {
-    //         this.alertService.error(error);
-    //         this.loading = false;
-    //     });
+
   }
 
   logout() {

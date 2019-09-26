@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { environment } from '@environments/environment';
 import { MovieList, Movie, MovieDto } from '@app/_models';
@@ -9,9 +9,12 @@ import { MovieList, Movie, MovieDto } from '@app/_models';
 export class OMDBService {
     constructor(private http: HttpClient) { }
 
-    movieSearchQuery(){
+    movieSearchQuery(para: string){
+      const params = new HttpParams()
+      .set('input', para)
       console.log("hit")
-      return this.http.get<MovieDto[]>(`${environment.apiUrl}/search/`);
+      console.log(para, 'yo')
+      return this.http.get<MovieDto[]>(`${environment.apiUrl}/search`, { params });
     }
 
 

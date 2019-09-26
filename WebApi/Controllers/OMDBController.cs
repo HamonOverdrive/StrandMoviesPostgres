@@ -22,9 +22,9 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("/search/")]
-        public async Task<IActionResult> MovieSearchQuery()
+        public async Task<IActionResult> MovieSearchQuery([FromQuery]string input)
         {
-            var result =  await _omdbService.MovieSearchQuery();
+            var result =  await _omdbService.MovieSearchQuery(input);
             return Ok(result);
         }
     }
