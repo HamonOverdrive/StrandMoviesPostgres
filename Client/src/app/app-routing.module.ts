@@ -13,10 +13,10 @@ const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'strandform', component: StrandFormComponent },
-  { path: 'strands', component: StrandListComponent },
-  { path: 'strands/:id', component: StrandDetailsComponent },
-  { path: 'search', component: SearchResultsComponent },
+  { path: 'strandform', component: StrandFormComponent, canActivate: [AuthGuard] },
+  { path: 'strands', component: StrandListComponent, canActivate: [AuthGuard] },
+  { path: 'strands/:id', component: StrandDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'search', component: SearchResultsComponent, canActivate: [AuthGuard] },
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
