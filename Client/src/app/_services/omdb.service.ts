@@ -12,8 +12,7 @@ export class OMDBService {
     movieSearchQuery(para: string){
       const params = new HttpParams()
       .set('input', para)
-      console.log("hit")
-      console.log(para, 'yo')
+
       return this.http.get<MovieDto[]>(`${environment.apiUrl}/search`, { params });
     }
 
