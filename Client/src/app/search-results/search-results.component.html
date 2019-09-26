@@ -1,4 +1,4 @@
-<div class="card mt-4">
+<!-- <div class="card mt-4">
   <h4 class="card-header">You're logged in with Angular 8 & Basic HTTP Authentication!!</h4>
   <div class="card-body">
       <h6>Users from secure api end point</h6>
@@ -8,10 +8,25 @@
             <a>-
               {{movie.title}} release: {{movie.year}}
             </a>
+            <img class="card-img-top" src="{{movie.imdbId}}" alt="Card image cap">
             {{movie.poster}}
             {{movie.imdbId}}
           </li>
       </ul>
+  </div>
+
+</div> -->
+
+<div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+<div class="row" *ngIf="moviedtos">
+  <div class="col-sm-2" *ngFor="let movie of moviedtos">
+  <div class="card m-2">
+    <img class="card-img-top" src="https://previews.123rf.com/images/lukeruk/lukeruk1708/lukeruk170800029/85131412-movie-poster-design-with-film-roll-on-colorful-background-retro-banner-concept-for-movie-festival-vi.jpg" alt="Card image cap">
+    <div class="card-body">
+        {{movie.title}}
+      <a href="#" class="stretched-link"></a>
+    </div>
+  </div>
   </div>
 
 </div>
