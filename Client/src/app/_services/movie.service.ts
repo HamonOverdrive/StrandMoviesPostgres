@@ -27,4 +27,9 @@ export class MovieService {
     return this.http.post(`${environment.apiUrl}/movies/`,movie, { params });
   }
 
+  delete(id: number) {
+    return this.http.delete(`${environment.apiUrl}/movies/` + id);
+  }
+
+
 }

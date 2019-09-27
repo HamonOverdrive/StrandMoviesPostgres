@@ -45,5 +45,12 @@ namespace WebApi.Controllers
 
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _movieService.Delete(id);
+            return Ok();
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace WebApi.Services
          Task<Movie> GetByTitle();
          IEnumerable<Movie> GetAllFromCurrentStrand(int strandid);
          Movie Create(Movie movie, int listId);
+         void Delete(int id);
     }
 
     public class MovieService : IMovieService
@@ -70,6 +71,16 @@ namespace WebApi.Services
             _context.SaveChanges();
 
             return movie;
+        }
+
+        public void Delete(int id)
+        {
+            var movie = _context.Movies.Find(id);
+            if (movie != null)
+            {
+                _context.Movies.Remove(movie);
+                _context.SaveChanges();
+            }
         }
 
 

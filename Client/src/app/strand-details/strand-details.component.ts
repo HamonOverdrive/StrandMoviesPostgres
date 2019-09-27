@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AlertService, UserService, AuthenticationService, MovieListService } from '../_services';
+import { AlertService, UserService, AuthenticationService, MovieListService, MovieService } from '../_services';
 import { MovieList, User, Movie } from '@app/_models';
 import { Location } from '@angular/common';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-strand-details',
@@ -15,6 +16,7 @@ export class StrandDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private movieListService: MovieListService,
+    private movieService: MovieService,
     private alertService: AlertService,
     private location: Location
   ) { }
@@ -22,6 +24,11 @@ export class StrandDetailsComponent implements OnInit {
   ngOnInit() {
     this.getById()
   }
+  deleteMovie(id: number) {
+    this.movieService.delete(id).pipe(first()).subscribe(() => {
+        this.getById()
+    });
+}
 
   getById(): void {
     const id = +this.route.snapshot.paramMap.get('id');

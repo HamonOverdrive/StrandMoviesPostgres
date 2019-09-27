@@ -10,12 +10,16 @@
       <img class="card-img-top" src="https://previews.123rf.com/images/lukeruk/lukeruk1708/lukeruk170800029/85131412-movie-poster-design-with-film-roll-on-colorful-background-retro-banner-concept-for-movie-festival-vi.jpg" alt="Card image cap">
       <div class="card-body">
           {{movie.title}}
-        <a href="#" class="stretched-link" routerLink="/moviedetail/{{movie.imdbID}}/"></a>
+          <div class="row">
+              <div class="col">
+                  <p class="btn btn-danger btn-block" (click)="deleteMovie(movie.id)" >Delete</p>
+              </div>
+          </div>
       </div>
     </div>
   </div>
 
-</div>
+  </div>
 
   </div>
   <button (click)="goBack()">go back</button>
