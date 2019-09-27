@@ -1,3 +1,4 @@
+
 namespace WebApi.Entities
 {
     public class Movie
@@ -15,6 +16,8 @@ namespace WebApi.Entities
         public string Plot { get; set; }
         public string Poster { get; set; }
         public string MetaScore { get; set; }
+
+        public MovieList MovieList { get; set; }
 
     }
 }

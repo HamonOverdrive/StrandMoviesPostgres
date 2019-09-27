@@ -42,6 +42,13 @@ namespace WebApi
 
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddMvc()
+                .AddJsonOptions(
+                    options => options.SerializerSettings.ReferenceLoopHandling =
+                    Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                );
+
             services.AddAutoMapper();
 
             // configure strongly typed settings objects
@@ -87,6 +94,8 @@ namespace WebApi
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IMovieListService, MovieListService>();
+            services.AddScoped<IOMDBService, OMDBService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

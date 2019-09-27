@@ -13,6 +13,9 @@ namespace WebApi.Services
     public interface IMovieService
     {
          Task<Movie> GetByTitle();
+         IEnumerable<Movie> GetAllFromCurrentStrand(int strandid);
+         Movie Create(Movie movie, int listId);
+         void Delete(int id);
     }
 
     public class MovieService : IMovieService
@@ -30,6 +33,7 @@ namespace WebApi.Services
 
         // example request look like http://www.omdbapi.com/?i=tt3896198&apikey=27630fb
         // request by title name and convert to json and map to movie object
+        // EXAMPLE METHOD UNUSED
         public async Task<Movie> GetByTitle()
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
@@ -49,6 +53,34 @@ namespace WebApi.Services
              Console.WriteLine("Save Complete");
 
             return testMovie;
+        }
+
+        public IEnumerable<Movie> GetAllFromCurrentStrand(int strandid)
+        {
+            return _context.Movies.Where(x => x.MovieList.Id == strandid).ToList();
+        }
+
+        // service creates movie and attaches relating movie list to assign one-to-many relation
+        public Movie Create(Movie movie, int listId)
+        {
+            var pickedList = _context.MovieLists.Find(listId);
+
+            movie.MovieList = pickedList;
+
+            _context.Movies.Add(movie);
+            _context.SaveChanges();
+
+            return movie;
+        }
+
+        public void Delete(int id)
+        {
+            var movie = _context.Movies.Find(id);
+            if (movie != null)
+            {
+                _context.Movies.Remove(movie);
+                _context.SaveChanges();
+            }
         }
 
 

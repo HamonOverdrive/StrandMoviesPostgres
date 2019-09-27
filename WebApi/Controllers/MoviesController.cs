@@ -26,7 +26,30 @@ namespace WebApi.Controllers
         {
            var mov =  await _movieService.GetByTitle();
 
+            return Ok();
+        }
 
+
+        [HttpGet("{id}")]
+        public IActionResult GetAllFromCurrentStrand(int strandid)
+        {
+            var allmovies =  _movieService.GetAllFromCurrentStrand(strandid);
+            return Ok(allmovies);
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromBody] Movie movie, [FromQuery]string listId)
+        {
+            int convertedId = Convert.ToInt32(listId);
+            var mov = _movieService.Create(movie, convertedId);
+
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _movieService.Delete(id);
             return Ok();
         }
     }
