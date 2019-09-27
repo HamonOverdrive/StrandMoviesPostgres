@@ -14,6 +14,7 @@ namespace WebApi.Services
     public interface IOMDBService
     {
          Task<List<MovieDto>> MovieSearchQuery(string input);
+         Task<Movie> getByImdb(string imdb);
     }
 
     public class OMDBService : IOMDBService
@@ -27,6 +28,23 @@ namespace WebApi.Services
             _context = context;
             _mapper = mapper;
             _clientFactory = clientFactory;
+        }
+
+        // this will take the string imdb id and using omdb find by imdbid to find the correct movie and automapper will map the movie to the correct entity
+        public async Task<Movie> getByImdb(string imdb)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get,
+            $"?i={imdb}&apikey=27630fb");
+
+            var client = _clientFactory.CreateClient("omdb");
+            var response = await client.SendAsync(request);
+
+            string responseBody = await response.Content.ReadAsStringAsync();
+            var json = JsonConvert.DeserializeObject<object>(responseBody);
+            Movie testMovie = _mapper.Map<Movie>(json);
+            Console.Write(responseBody);
+
+            return testMovie;
         }
 
         // takes in movie string and queries search from omdb api
@@ -46,10 +64,10 @@ namespace WebApi.Services
 
             var movies = _mapper.Map<List<MovieDto>>(movieQuery.Search);
 
-            foreach(var mov in movies)
-            {
-                Console.Write(mov.Title);
-            }
+            // foreach(var mov in movies)
+            // {
+            //     Console.Write(mov.Title);
+            // }
              Console.WriteLine("Save Complete");
 
             return movies;

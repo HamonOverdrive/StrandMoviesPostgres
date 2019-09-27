@@ -21,6 +21,13 @@ namespace WebApi.Controllers
 
         }
 
+        [HttpGet("findimdb/{imdbID}")]
+        public async Task<IActionResult> getByImdb(string imdbID)
+        {
+            var mov =  await _omdbService.getByImdb(imdbID);
+            return Ok(mov);
+        }
+
         [HttpGet("/search/")]
         public async Task<IActionResult> MovieSearchQuery([FromQuery]string input)
         {

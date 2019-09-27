@@ -31,6 +31,7 @@ namespace WebApi.Services
 
         // example request look like http://www.omdbapi.com/?i=tt3896198&apikey=27630fb
         // request by title name and convert to json and map to movie object
+        // EXAMPLE METHOD UNUSED
         public async Task<Movie> GetByTitle()
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
