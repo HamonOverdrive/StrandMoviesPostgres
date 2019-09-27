@@ -36,12 +36,12 @@
 	<div class="row">
 		<div class="col-sm-5">
 			<dl class="param param-inline">
-			  <dt>Quantity: </dt>
+			  <dt>Select WishList to Add To: </dt>
 			  <dd>
-			  	<select class="form-control form-control-sm" style="width:70px;">
-			  		<option> 1 </option>
-			  		<option> 2 </option>
-			  		<option> 3 </option>
+          <select class="form-control form-control-sm">
+            <option *ngFor="let movieList of movieLists" value={{movieList.id}}>
+              {{movieList.listName}}
+            </option>
 			  	</select>
 			  </dd>
 			</dl>  <!-- item-property .// -->
@@ -67,7 +67,6 @@
 		</div> <!-- col.// -->
 	</div> <!-- row.// -->
 	<hr>
-	<a href="#" class="btn btn-lg btn-primary text-uppercase"> Buy now </a>
 	<a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to WishList </a>
 </article> <!-- card-body.// -->
 		</aside> <!-- col.// -->
