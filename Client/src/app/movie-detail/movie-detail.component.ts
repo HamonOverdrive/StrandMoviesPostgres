@@ -63,7 +63,6 @@ export class MovieDetailComponent implements OnInit {
     if (this.movieAddForm.invalid) {
         return;
     }
-
     this.loading = true;
     this.movieAddForm.value.userId = this.currentUser.id
     let listId = this.movieAddForm.controls["wishlist"].value
@@ -72,7 +71,7 @@ export class MovieDetailComponent implements OnInit {
     .pipe(first())
       .subscribe(
           data => {
-              this.alertService.success('Strand Created', true);
+              this.alertService.success('Movie Created', true);
               this.router.navigate(['/']);
           },
           error => {

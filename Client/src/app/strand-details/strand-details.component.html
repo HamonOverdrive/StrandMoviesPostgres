@@ -2,13 +2,20 @@
     <h2>{{strand.listName | uppercase}} Details</h2>
     <div><span>id: </span>{{strand.id}}</div>
 
-    <ul *ngIf="strand.movies">
-        <li *ngFor="let movie of movies">
-          <a routerLink="/strands/{{strand.id}}/">
-            {{strand.listName}}
-          </a>
-        </li>
-    </ul>
+
+  <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+  <div class="row" *ngIf="strand.movies">
+  <div class="col-sm-2" *ngFor="let movie of strand.movies">
+    <div class="card m-2">
+      <img class="card-img-top" src="https://previews.123rf.com/images/lukeruk/lukeruk1708/lukeruk170800029/85131412-movie-poster-design-with-film-roll-on-colorful-background-retro-banner-concept-for-movie-festival-vi.jpg" alt="Card image cap">
+      <div class="card-body">
+          {{movie.title}}
+        <a href="#" class="stretched-link" routerLink="/moviedetail/{{movie.imdbID}}/"></a>
+      </div>
+    </div>
+  </div>
+
+</div>
 
   </div>
   <button (click)="goBack()">go back</button>

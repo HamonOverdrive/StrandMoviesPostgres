@@ -42,7 +42,8 @@ namespace WebApi.Services
 
         public MovieList GetById(int id)
         {
-            return _context.MovieLists.Find(id);
+            // return _context.MovieLists.Find(id);
+            return _context.MovieLists.Include(c=>c.Movies).FirstOrDefault(entity=>entity.Id == id);
         }
     }
 }

@@ -59,6 +59,7 @@ namespace WebApi.Services
             return _context.Movies.Where(x => x.MovieList.Id == strandid).ToList();
         }
 
+        // service creates movie and attaches relating movie list to assign one-to-many relation
         public Movie Create(Movie movie, int listId)
         {
             var pickedList = _context.MovieLists.Find(listId);
