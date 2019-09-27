@@ -15,6 +15,7 @@ import { StrandFormComponent } from './strand-form/strand-form.component';
 import { StrandListComponent } from './strand-list/strand-list.component';
 import { StrandDetailsComponent } from './strand-details/strand-details.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     StrandListComponent,
     StrandDetailsComponent,
     SearchResultsComponent,
+    MovieDetailComponent,
   ],
   imports: [
     BrowserModule,

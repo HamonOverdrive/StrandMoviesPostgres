@@ -16,5 +16,8 @@ export class OMDBService {
       return this.http.get<MovieDto[]>(`${environment.apiUrl}/search`, { params });
     }
 
+    getByImdb(imdbID: string) {
+      return this.http.get<Movie>(`${environment.apiUrl}/omdb/findimdb/`+ imdbID);
+    }
 
 }

@@ -28,7 +28,9 @@ export class SearchResultsComponent implements OnInit {
 
   getSearchMovieQuery(para: string): void {
     this.omdbService.movieSearchQuery(para)
-        .subscribe(movies => this.moviedtos = movies);
+        .subscribe(movies =>
+          {
+            this.moviedtos = movies});
   }
 
 }
