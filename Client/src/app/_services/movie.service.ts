@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { environment } from '@environments/environment';
 import { User, Movie } from '@app/_models';
@@ -17,6 +17,14 @@ export class MovieService {
   // }
   getAllFromCurrentStrand(id: number){
     return this.http.get<Movie[]>(`${environment.apiUrl}/movies/` + id);
+  }
+
+  create(movie : Movie, listId: string){
+    let params = new HttpParams()
+      .set('listId', listId);
+
+
+    return this.http.post(`${environment.apiUrl}/movies/`,movie, { params });
   }
 
 }

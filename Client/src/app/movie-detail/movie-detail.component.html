@@ -1,6 +1,7 @@
 <div class="card" *ngIf="movie">
 	<div class="row">
 		<aside class="col-sm-5 border-right">
+
 <article class="gallery-wrap">
 <div class="img-big-wrap">
   <div> <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR3EdS2RMIHAMnMi9PK-be_3Df_ShhnvvbSMItNmoGz4WTMkwrE"></a></div>
@@ -9,6 +10,7 @@
 </article> <!-- gallery-wrap .end// -->
 		</aside>
 		<aside class="col-sm-7">
+        <form [formGroup]="movieAddForm" (ngSubmit)="onSubmit()">
 <article class="card-body p-5">
 	<h3 class="title mb-3">{{movie.title}} ({{movie.year}})</h3>
 
@@ -38,7 +40,7 @@
 			<dl class="param param-inline">
 			  <dt>Select WishList to Add To: </dt>
 			  <dd>
-          <select class="form-control form-control-sm">
+          <select class="form-control form-control-sm" formControlName="wishlist">
             <option *ngFor="let movieList of movieLists" value={{movieList.id}}>
               {{movieList.listName}}
             </option>
@@ -46,29 +48,11 @@
 			  </dd>
 			</dl>  <!-- item-property .// -->
 		</div> <!-- col.// -->
-		<div class="col-sm-7">
-			<dl class="param param-inline">
-				  <dt>Size: </dt>
-				  <dd>
-				  	<label class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-					  <span class="form-check-label">SM</span>
-					</label>
-					<label class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-					  <span class="form-check-label">MD</span>
-					</label>
-					<label class="form-check form-check-inline">
-					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-					  <span class="form-check-label">XXL</span>
-					</label>
-				  </dd>
-			</dl>  <!-- item-property .// -->
-		</div> <!-- col.// -->
 	</div> <!-- row.// -->
 	<hr>
-	<a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to WishList </a>
+	<button type="submit" class="btn btn-lg btn-outline-primary text-uppercase"> Add to WishList </button>
 </article> <!-- card-body.// -->
+</form>
 		</aside> <!-- col.// -->
 	</div> <!-- row.// -->
 </div> <!-- card.// -->

@@ -36,5 +36,14 @@ namespace WebApi.Controllers
             var allmovies =  _movieService.GetAllFromCurrentStrand(strandid);
             return Ok(allmovies);
         }
+
+        [HttpPost]
+        public IActionResult Create([FromBody] Movie movie, [FromQuery]string listId)
+        {
+            int convertedId = Convert.ToInt32(listId);
+            var mov = _movieService.Create(movie, convertedId);
+
+            return Ok();
+        }
     }
 }

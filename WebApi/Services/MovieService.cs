@@ -14,6 +14,7 @@ namespace WebApi.Services
     {
          Task<Movie> GetByTitle();
          IEnumerable<Movie> GetAllFromCurrentStrand(int strandid);
+         Movie Create(Movie movie, int listId);
     }
 
     public class MovieService : IMovieService
@@ -56,6 +57,18 @@ namespace WebApi.Services
         public IEnumerable<Movie> GetAllFromCurrentStrand(int strandid)
         {
             return _context.Movies.Where(x => x.MovieList.Id == strandid).ToList();
+        }
+
+        public Movie Create(Movie movie, int listId)
+        {
+            var pickedList = _context.MovieLists.Find(listId);
+
+            movie.MovieList = pickedList;
+
+            _context.Movies.Add(movie);
+            _context.SaveChanges();
+
+            return movie;
         }
 
 
