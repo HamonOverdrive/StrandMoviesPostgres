@@ -4,13 +4,13 @@ FROM microsoft/dotnet:2.2-sdk AS build-env
 # Unsure if Expose and ENV are needed
 EXPOSE 8080
 ENV ASPNETCORE_URLS=http://*:8080
-WORKDIR /app/WebApi
+WORKDIR /app
 
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x |  bash -
 RUN apt-get install -y nodejs
 # Copy csproj and restore as distinct layers
-COPY *.csproj ./
+COPY WebApi/*.csproj ./
 RUN dotnet restore
 
 # Copy everything else and build
