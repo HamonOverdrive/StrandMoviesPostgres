@@ -16,6 +16,7 @@ namespace WebApi.Services
          IEnumerable<Movie> GetAllFromCurrentStrand(int strandid);
          Movie Create(Movie movie, int listId);
          void Delete(int id);
+         void UpdateCurrentRate(Movie movieR);
     }
 
     public class MovieService : IMovieService
@@ -71,6 +72,20 @@ namespace WebApi.Services
             _context.SaveChanges();
 
             return movie;
+        }
+
+        // updates movie rating
+        public void UpdateCurrentRate(Movie movieR)
+        {
+            var movie = _context.Movies.Find(movieR.Id);
+
+            if (movie == null)
+                throw new AppException("Movie not found");
+            // update movie rating
+            movie.CurrentRate = movieR.CurrentRate;
+
+            _context.Movies.Update(movie);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)

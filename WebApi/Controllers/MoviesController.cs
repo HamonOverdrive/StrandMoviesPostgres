@@ -1,9 +1,12 @@
 using System;
-using WebApi.Entities;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using WebApi.Services;
-using System.Threading.Tasks;
+using WebApi.Helpers;
+using WebApi.Entities;
+
 
 namespace WebApi.Controllers
 {
@@ -13,12 +16,16 @@ namespace WebApi.Controllers
     {
         private IMovieService _movieService;
         private IMapper _mapper;
+        private readonly AppSettings _appSettings;
         public MoviesController(
             IMovieService movieService,
-            IMapper mapper)
+            IMapper mapper,
+            IOptions<AppSettings> appSettings
+            )
         {
             _movieService = movieService;
             _mapper = mapper;
+            _appSettings = appSettings.Value;
         }
 
         [HttpPost("kara")]
@@ -46,11 +53,28 @@ namespace WebApi.Controllers
             return Ok();
         }
 
+        [HttpPut("updaterate/{id}")]
+        public IActionResult UpdateCurrentRate(int id, [FromBody] Movie movieR)
+        {
+            try
+            {
+                // save
+                _movieService.UpdateCurrentRate(movieR);
+                return Ok();
+            }
+            catch(AppException ex)
+            {
+                // return error message if there was an exception
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             _movieService.Delete(id);
             return Ok();
         }
+
     }
 }

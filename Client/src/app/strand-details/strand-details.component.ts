@@ -4,6 +4,7 @@ import { AlertService, UserService, AuthenticationService, MovieListService, Mov
 import { MovieList, User, Movie } from '@app/_models';
 import { Location } from '@angular/common';
 import { first } from 'rxjs/operators';
+import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-strand-details',
@@ -18,8 +19,10 @@ export class StrandDetailsComponent implements OnInit {
     private movieListService: MovieListService,
     private movieService: MovieService,
     private alertService: AlertService,
-    private location: Location
-  ) { }
+    private location: Location,
+    config: NgbRatingConfig
+    ) {  config.max = 5;
+     }
 
   ngOnInit() {
     this.getById()
@@ -34,10 +37,20 @@ export class StrandDetailsComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.movieListService.getById(id)
       .subscribe(strand =>{
-        console.log(strand)
+
         this.strand = strand
       });
   }
+
+  // send rating number and movie the api update for rating
+  onRateChange(rating :number, movie: Movie) {
+
+    movie.currentRate = rating;
+    this.movieService.updateCurrentRate(movie).pipe(first()).subscribe(() => {
+      this.getById()
+  });
+  }
+
 
   goBack(): void {
     this.location.back();
