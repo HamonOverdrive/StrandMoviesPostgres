@@ -35,12 +35,19 @@ export class NavbarComponent implements OnInit {
           this.filteredMovies = [];
           this.isLoading = true;
         }),
-        switchMap(value => this.omdbService.movieSearchQuery(value)
-          .pipe(
-            finalize(() => {
-              this.isLoading = false
-            }),
-          )
+        switchMap(value =>{
+          if(value.length >= 3){
+            return this.omdbService.movieSearchQuery(value)
+            .pipe(
+              finalize(() => {
+                this.isLoading = false
+              }),
+          )}
+          else{
+            this.isLoading = false
+            return []
+          }
+        }
         )
       )
       .subscribe(data => {

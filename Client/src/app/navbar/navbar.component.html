@@ -9,7 +9,7 @@
             <div>
                 <mat-form-field style="width: 36rem !important">
                   <input matInput placeholder="Search movies" aria-label="State" [matAutocomplete]="auto" [formControl]="searchMoviesCtrl" name="searched">
-                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" min-search="3">
                     <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
                     <ng-container *ngIf="!isLoading">
                       <mat-option *ngFor="let movie of filteredMovies" [value]="movie.title">
