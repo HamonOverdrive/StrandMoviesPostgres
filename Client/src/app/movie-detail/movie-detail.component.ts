@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService, AlertService, OMDBService, MovieListService, MovieService } from '@app/_services';
 import { MovieList, User, Movie } from '@app/_models';
 import { first } from 'rxjs/operators';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-movie-detail',
@@ -26,7 +27,8 @@ export class MovieDetailComponent implements OnInit {
       private movieListService: MovieListService,
       private movieService: MovieService,
       private formBuilder: FormBuilder,
-      private alertService: AlertService,) { }
+      private alertService: AlertService,
+      private location: Location,) { }
 
   ngOnInit() {
 
@@ -78,6 +80,10 @@ export class MovieDetailComponent implements OnInit {
               this.alertService.error(error);
               this.loading = false;
           });
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
