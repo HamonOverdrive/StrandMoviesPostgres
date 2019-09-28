@@ -10,6 +10,7 @@ export class Movie {
   plot: string;
   poster: string;
   metascore: string;
+  currentRate: number;
 
   movieListId? : number;
 }
