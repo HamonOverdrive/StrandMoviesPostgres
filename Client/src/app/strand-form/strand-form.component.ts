@@ -54,7 +54,7 @@ export class StrandFormComponent implements OnInit {
         data => {
           console.log(this.strandForm.value)
             this.alertService.success('Strand Created', true);
-            this.router.navigate(['/']);
+            this.router.navigate(['/strands']);
         },
         error => {
             this.alertService.error(error);
