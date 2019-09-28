@@ -72,7 +72,7 @@ export class MovieDetailComponent implements OnInit {
       .subscribe(
           data => {
               this.alertService.success('Movie Created', true);
-              this.router.navigate(['/']);
+              this.router.navigate([`/strands/` + listId]);
           },
           error => {
               this.alertService.error(error);

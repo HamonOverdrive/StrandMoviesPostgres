@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { AuthenticationService, AlertService, OMDBService } from '@app/_services';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 import { debounceTime, tap, switchMap, finalize } from 'rxjs/operators';
 

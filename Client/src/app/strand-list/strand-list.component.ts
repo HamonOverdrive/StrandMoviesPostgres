@@ -22,7 +22,6 @@ export class StrandListComponent implements OnInit {
     this.loading = true;
     this.movieListService.getAllByUserId(this.currentUser.id).pipe(first()).subscribe(strands => {
         this.loading = false;
-        console.log(strands)
         this.strands = strands;
     });
   }
