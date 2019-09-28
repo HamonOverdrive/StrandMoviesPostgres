@@ -4,7 +4,7 @@ FROM microsoft/dotnet:2.2-sdk AS build-env
 # Unsure if Expose and ENV are needed
 EXPOSE 8080
 ENV ASPNETCORE_URLS=http://*:8080
-WORKDIR /app
+WORKDIR /app/WebApi
 
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x |  bash -
