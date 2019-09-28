@@ -9,6 +9,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { RegisterComponent } from './register/register.component';
 import { StrandFormComponent } from './strand-form/strand-form.component';
@@ -36,7 +42,10 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
