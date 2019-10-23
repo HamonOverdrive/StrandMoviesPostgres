@@ -29,18 +29,11 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            // services.AddDbContext<DataContext>(x => x.UseInMemoryDatabase("TestDb"));
 
             // services.AddDbContext<DataContext>(options =>
             //     options.UseSqlServer(Configuration.GetConnectionString("StrandDB")));
 
-            // services
-            //     .AddEntityFrameworkNpgsql()
-            //     .AddDbContext<DataContext>(options =>
-            //         options.UseNpgsql(
-            //             Configuration.GetConnectionString("DataContext"),
-            //             o => o.MigrationsAssembly("WebApi")
-            //         ));
+
             services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(options =>
             {
                 var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
